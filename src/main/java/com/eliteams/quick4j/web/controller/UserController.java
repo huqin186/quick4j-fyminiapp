@@ -100,4 +100,9 @@ public class UserController {
     public String create() {
         return "拥有user:create权限,能访问";
     }
+
+    @RequestMapping(value = "/toUserInfo")
+    public String toUserInfo(){
+        return "UserManager/UserInfo";
+    }
 }

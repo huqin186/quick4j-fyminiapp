@@ -101,7 +101,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 	</form>
 	<!-- END LOGIN FORM -->
 	<!-- BEGIN FORGOT PASSWORD FORM -->
-	<form class="forget-form" action="index.html" method="post">
+	<form class="forget-form" action="index.jsp" method="post">
 		<h3>忘记密码 ?</h3>
 		<p>
 			 请输入您的电子邮箱地址来重置您的密码.
@@ -122,7 +122,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 	</form>
 	<!-- END FORGOT PASSWORD FORM -->
 	<!-- BEGIN REGISTRATION FORM -->
-	<form class="register-form" action="index.html" method="post">
+	<form class="register-form" action="index.jsp" method="post">
 		<h3>注  册</h3>
 		<p>
 			 请输入您的个人信息:

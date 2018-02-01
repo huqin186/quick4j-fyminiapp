@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!--导入属性配置 -->
+    <properties resource="generator.properties"></properties>
+    <classPathEntry location="${jdbc.diverLocation}" />
+
+    <context id="MysqlTables" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <!-- 数据库配置 -->
+        <jdbcConnection driverClass="${jdbc.driverClass}"
+                        connectionURL="${jdbc.connectionURL}"
+                        userId="${jdbc.userId}"
+                        password="${jdbc.password}">
+        </jdbcConnection>
+
+        <!-- Model 存放位置 -->
+        <javaModelGenerator targetPackage="com.eliteams.quick4j.web.model" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!-- 映射文件存放位置 -->
+        <sqlMapGenerator targetPackage="com.eliteams.quick4j.web.dao" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!-- DAO存放位置 -->
+        <!--   type="ANNOTATEDMAPPER",生成Java Model 和基于注解的Mapper对象
+               type="MIXEDMAPPER",生成基于注解的Java Model 和相应的Mapper对象
+               type="XMLMAPPER",生成SQLMap XML文件和独立的Mapper接口
+        -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.eliteams.quick4j.web.dao" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <!-- 添加父接口 -->
+            <property name="rootInterface" value=""/>
+        </javaClientGenerator>
+
+        <table schema="fyminiapp"
+               tableName="b_customer"
+               domainObjectName="Customer"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+    </context>
+</generatorConfiguration>
