@@ -25,7 +25,7 @@
 
     <div>
 
-        <table id="dg" title="My Users" class="easyui-datagrid" style="width:550px;height:250px"
+        <table id="dg" title="My Users" class="easyui-datagrid" style="width:100%;"
                url="get_users.php"
                toolbar="#toolbar"
                rownumbers="true" fitColumns="true" singleSelect="true">
