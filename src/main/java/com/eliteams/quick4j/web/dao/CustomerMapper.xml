@@ -242,4 +242,130 @@
       state = #{state,jdbcType=CHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+  <select id="selectSelective"
+          resultMap="BaseResultMap"
+          parameterType="com.eliteams.quick4j.web.model.Customer" >
+    select
+    <include refid="Base_Column_List" />
+    from b_customer
+    <where>
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR}
+      </if>
+      <if test="pwd != null" >
+        AND pwd = #{pwd,jdbcType=VARCHAR}
+      </if>
+      <if test="sex != null" >
+        AND sex = #{sex,jdbcType=CHAR}
+      </if>
+      <if test="phone != null" >
+        AND phone = #{phone,jdbcType=VARCHAR}
+      </if>
+      <if test="idCard != null" >
+        AND id_card = #{idCard,jdbcType=VARCHAR}
+      </if>
+      <if test="birthday != null" >
+        AND birthday = #{birthday,jdbcType=DATE}
+      </if>
+      <if test="country != null" >
+        AND country = #{country,jdbcType=VARCHAR}
+      </if>
+      <if test="province != null" >
+        AND province = #{province,jdbcType=VARCHAR}
+      </if>
+      <if test="city != null" >
+        AND city = #{city,jdbcType=VARCHAR}
+      </if>
+      <if test="area != null" >
+        AND area = #{area,jdbcType=VARCHAR}
+      </if>
+      <if test="address != null" >
+        AND address = #{address,jdbcType=VARCHAR}
+      </if>
+      <if test="createdTime != null" >
+        AND created_time = #{createdTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="modifiedTime != null" >
+        AND modified_time = #{modifiedTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="createdUser != null" >
+        AND created_user = #{createdUser,jdbcType=BIGINT}
+      </if>
+      <if test="modifiedUser != null" >
+        AND modified_user = #{modifiedUser,jdbcType=BIGINT}
+      </if>
+      <if test="remark != null" >
+        AND remark = #{remark,jdbcType=VARCHAR}
+      </if>
+      <if test="state != null" >
+        AND state = #{state,jdbcType=CHAR}
+      </if>
+    </where>
+      <if test="sort != null and sort != ''">
+        ORDER BY ${sort} ${order}
+      </if>
+      limit #{start,jdbcType=INTEGER},#{rows,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectCountSelective"
+          resultType="java.lang.Integer"
+          parameterType="com.eliteams.quick4j.web.model.Customer" >
+    select
+      count(*)
+    from b_customer
+    <where>
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR}
+      </if>
+      <if test="pwd != null" >
+        AND pwd = #{pwd,jdbcType=VARCHAR}
+      </if>
+      <if test="sex != null" >
+        AND sex = #{sex,jdbcType=CHAR}
+      </if>
+      <if test="phone != null" >
+        AND phone = #{phone,jdbcType=VARCHAR}
+      </if>
+      <if test="idCard != null" >
+        AND id_card = #{idCard,jdbcType=VARCHAR}
+      </if>
+      <if test="birthday != null" >
+        AND birthday = #{birthday,jdbcType=DATE}
+      </if>
+      <if test="country != null" >
+        AND country = #{country,jdbcType=VARCHAR}
+      </if>
+      <if test="province != null" >
+        AND province = #{province,jdbcType=VARCHAR}
+      </if>
+      <if test="city != null" >
+        AND city = #{city,jdbcType=VARCHAR}
+      </if>
+      <if test="area != null" >
+        AND area = #{area,jdbcType=VARCHAR}
+      </if>
+      <if test="address != null" >
+        AND address = #{address,jdbcType=VARCHAR}
+      </if>
+      <if test="createdTime != null" >
+        AND created_time = #{createdTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="modifiedTime != null" >
+        AND modified_time = #{modifiedTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="createdUser != null" >
+        AND created_user = #{createdUser,jdbcType=BIGINT}
+      </if>
+      <if test="modifiedUser != null" >
+        AND modified_user = #{modifiedUser,jdbcType=BIGINT}
+      </if>
+      <if test="remark != null" >
+        AND remark = #{remark,jdbcType=VARCHAR}
+      </if>
+      <if test="state != null" >
+        AND state = #{state,jdbcType=CHAR}
+      </if>
+    </where>
+  </select>
 </mapper>

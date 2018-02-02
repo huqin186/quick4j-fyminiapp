@@ -25,6 +25,8 @@
         <javaModelGenerator targetPackage="com.eliteams.quick4j.web.model" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
+            <!-- 添加父接口 -->
+            <property name="rootInterface" value="com.eliteams.quick4j.core.generic.GenericModel"/>
         </javaModelGenerator>
 
         <!-- 映射文件存放位置 -->
@@ -40,7 +42,7 @@
         <javaClientGenerator type="XMLMAPPER" targetPackage="com.eliteams.quick4j.web.dao" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
             <!-- 添加父接口 -->
-            <property name="rootInterface" value=""/>
+            <property name="rootInterface" value="com.eliteams.quick4j.core.generic.GenericDao"/>
         </javaClientGenerator>
 
         <table schema="fyminiapp"

@@ -1,8 +1,10 @@
 package com.eliteams.quick4j.web.model;
 
+import com.eliteams.quick4j.core.generic.GenericModel;
+
 import java.util.Date;
 
-public class Customer {
+public class Customer extends GenericModel {
     private Long id;
 
     private String userName;

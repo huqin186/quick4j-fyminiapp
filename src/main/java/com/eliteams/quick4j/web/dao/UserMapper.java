@@ -6,6 +6,7 @@ import com.eliteams.quick4j.core.feature.orm.mybatis.Page;
 import com.eliteams.quick4j.core.generic.GenericDao;
 import com.eliteams.quick4j.web.model.User;
 import com.eliteams.quick4j.web.model.UserExample;
+import org.springframework.stereotype.Repository;
 
 /**
  * 用户Dao接口
@@ -13,6 +14,7 @@ import com.eliteams.quick4j.web.model.UserExample;
  * @author StarZou
  * @since 2014年7月5日 上午11:49:57
  **/
+@Repository
 public interface UserMapper extends GenericDao<User, Long> {
     int countByExample(UserExample example);
 

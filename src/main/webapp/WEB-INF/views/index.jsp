@@ -61,7 +61,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 								<div class="sub_menu_screen">
 									<ul>
 										<li>
-											<a href="javascript:void(0);" onclick="addTab('${ctx}/rest/user/toUserInfo','用户信息');" title="用户信息">
+											<a href="javascript:void(0);" onclick="addTab('${ctx}/rest/customer/toCustomerList','客户信息');" title="用户信息">
 												<span><img src="assets/img/user_info.png" width="56" height="61" /></span>
 												<p>用户信息</p>
 											</a>
