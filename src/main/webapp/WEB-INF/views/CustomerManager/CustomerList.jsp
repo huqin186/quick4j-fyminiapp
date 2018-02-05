@@ -37,9 +37,49 @@
             <a href="#" class="easyui-linkbutton" iconCls="icon-search">查询</a>
         </div>
         <div style="margin: 10px 10px">
-            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true">添加</a>
-            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true">编辑</a>
+            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true"  onclick="addFct()">添加</a>
+            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editFct()">编辑</a>
             <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="deleteFct()">删除</a>
+        </div>
+    </div>
+
+    <div id="CustomerListEditDiv" class="easyui-window" title="Login" data-options="modal:true,closed:true">
+        <div style="padding:10px 60px 20px 60px">
+            <form id="CustomerListEditForm" method="post">
+                <table cellpadding="5">
+                    <tr>
+                        <td>姓名:</td>
+                        <td><input class="easyui-textbox" type="text" name="userName" data-options="required:true"/></td>
+                    </tr>
+                    <tr>
+                        <td>性别:</td>
+                        <td>
+                            <input type="radio" name="sex" value="1">男</input>
+                            <input type="radio" name="sex" value="0">女</input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>电话:</td>
+                        <td><input class="easyui-textbox" type="text" name="phone" data-options="required:true"/></td>
+                    </tr>
+                    <tr>
+                        <td>生日:</td>
+                        <td><input class="easyui-textbox" name="birthday" data-options="multiline:true" style="height:60px"/></td>
+                    </tr>
+                    <tr>
+                        <td>状态:</td>
+                        <td>
+                            <input type="radio" name="state" value="0">启用</input>
+                            <input type="radio" name="state" value="1">停用</input>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <div style="text-align:center;padding:5px">
+                <a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()" data-options="iconCls:'icon-ok'">提交</a>
+                <a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()" data-options="iconCls:'icon-undo'">重置</a>
+                <a href="javascript:void(0)" class="easyui-linkbutton" onclick="closeWindow()" data-options="iconCls:'icon-cancel'">Cancel</a>
+            </div>
         </div>
     </div>
 
@@ -50,7 +90,7 @@
     <script type="text/javascript">
         //
         var $CustomerListTable = $('#CustomerListTable');
-        //
+        //删除
         function deleteFct() {
             var rows = $CustomerListTable.datagrid('getSelections');
             if (rows.length!=0) {
@@ -63,7 +103,7 @@
                 ShowMsg('请先勾选记录');
             }
         }
-
+        //ajax同步删除
         function ajaxDel(id) {
             $.ajax({
                 url: '${ctx}/rest/customer/deleteById',
@@ -79,6 +119,22 @@
                 }
 
             });
+        }
+        //添加
+        function addFct() {
+            $('#CustomerListEditDiv').window('open');
+        }
+        //提交
+        function submitForm(){
+            $('#CustomerListEditForm').form('submit');
+        }
+        //重置
+        function clearForm(){
+            $('#CustomerListEditForm').form('clear');
+        }
+        //窗口关闭
+        function closeWindow() {
+            $('#CustomerListEditDiv').window('close');
         }
         //
         $(function () {
@@ -100,14 +156,25 @@
                     {field:'phone',title:'phone'},
                     {field:'birthday',title:'birthday',sortable:true},
                     {field:'state',title:'状态',
-                        formatter: function(value,row,index){
+                        formatter: function(value, row, index){
                             var dict = {0:'停用',1:'正常'};
                             return dict[value];
                         }
                     }
                 ]]
             });
-            
+
+            $('#CustomerListEditForm').form({
+                url: "${ctx}/rest/customer/customerEdit",
+                onSubmit: function(){
+
+                },
+                success:function(data){
+                    console.log(data);
+                }
+            });
+
+
 
         })
     </script>
